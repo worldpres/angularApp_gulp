@@ -1,0 +1,43 @@
+<div class="row">
+	<div ng-include="'menu.html'"></div>
+</div>
+
+<div class="row">
+	<div class="col-sm-12 text-center">
+		<button type="button" id="down" class="btn btn-{{downloadColor}} col-sm-6 col-xs-12" ng-click="download()">
+		    <span class="glyphicon glyphicon-cloud-download"></span> Pobierz z serwera
+		</button>
+		<button type="button" id="up" class="btn btn-{{uploadColor}} col-sm-6 col-xs-12" ng-click="upload()">
+		    <span class="glyphicon glyphicon-cloud-upload"></span> Wyślij na serwer
+		</button>		
+	</div>
+</div>
+
+<br>
+<div class="input-group">
+	<span class="input-group-addon">Szukaj: </span>
+	<input type="text" class="form-control" placeholder="Znajdź usera" ng-model="szukaj">
+</div>
+<br>
+<div class="table-responsive">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th ng-repeat="(key, value) in headerObj" ng-click="setSort(key);">
+					<span class="glyphicon glyphicon-sort"></span> {{value}}
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat='user in listaKont | orderBy: sortVal : sortDir | filter : szukaj'>
+				<td><input type="text" class="form-control" name="login" ng-model="user.login" ng-disabled="user.login=='admin'"></td>
+				<td><input type="text" class="form-control" name="email" ng-model="user.email"></td>
+				<td><input type="text" class="form-control" name="phone" ng-model="user.phone"></td>
+				<td><input type="text" class="form-control" name="nation" ng-model="user.nation"></td>
+				<td><input name="birth" type="date" class="form-control" ng-model="user.birth" ng-value="user.birth | date:'yyyy-MM-dd'"></td>
+				<td><input type="text" class="form-control" name="www" ng-model="user.www"></td>
+				<td><button class="btn btn-default" ng-click="del(user.id);"><span class="glyphicon glyphicon-remove"></span></button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
