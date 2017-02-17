@@ -167,7 +167,7 @@ gulp clean
 
 
 gulp.task('others', function(){
-	return gulp.src(cfg.src+'*.{js,sql,md}')
+	return gulp.src(cfg.src+'*.{md}')
 		.pipe(gulp.dest(cfg.dist));
 });
 gulp.task('fonts', function(){
