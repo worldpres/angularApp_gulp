@@ -73,7 +73,7 @@ gulp.task('serve', ['sass'], function() { //zadnie serve które też uruchamia z
 	/* browserSync({
 		server: cfg.src // folder zaczytywany przez browserSync do localhost:3000
 	});	*/
-	connectPHP.server({	base: cfg.src, port: 8010, keepalive: true },
+	connectPHP.server({	base: cfg.dist, port: 8010, keepalive: true },
 		function(){	browserSync({ proxy: '127.0.0.1:8010' }) }
     );
 
@@ -151,7 +151,7 @@ gulp.task('clean', function(){	//optymalizacja html
 });
 
 gulp.task('build', function(){	//optymalizacja html
-	sequence('clean', ['html','js','css','img','php','others','fonts']); //po zadaniu clean tablica z zadaniami
+	sequence('clean', ['html','js','css','img','php','fonts']); //po zadaniu clean tablica z zadaniami
 });
 
 
@@ -166,10 +166,12 @@ gulp clean
 */
 
 
+/*
 gulp.task('others', function(){
 	return gulp.src(cfg.src+'*.{md}')
 		.pipe(gulp.dest(cfg.dist));
 });
+*/
 gulp.task('fonts', function(){
 	return gulp.src(cfg.src+'fonts/**/*')
 		.pipe(gulp.dest(cfg.dist+'fonts/'));
