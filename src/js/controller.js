@@ -71,6 +71,8 @@ app.controller('ctrlLog', [ '$http', '$window', '$scope', '$location', function(
             }else{
                 $scope.loginIncorrect = true;
             }
+        }).error(function(){
+            console.log(response);
         });
     }
 }]);

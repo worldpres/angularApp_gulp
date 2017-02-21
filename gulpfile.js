@@ -31,9 +31,9 @@ var cfg = {
 	htmlout		: 'dist/',
 	scssout		: 'src/css/',
 	cssoutname 	 : 'style.css',
-	jsoutname 	 : 'script.js',
+	jsoutname 	 : 'scripts.js',
 	cssreplaceout: 'css/style.css',
-	jsreplaceout : 'js/script.js',
+	jsreplaceout : 'js/scripts.js',
 	phpin 		: 'src/*.php',
 	phpout 		: 'dist/'
 }
@@ -70,10 +70,12 @@ gulp.task('sass', function(){
 });
 
 gulp.task('serve', ['sass'], function() { //zadnie serve które też uruchamia zadanie sass
-	/* browserSync({
+	/*
+	browserSync({
 		server: cfg.src // folder zaczytywany przez browserSync do localhost:3000
-	});	*/
-	connectPHP.server({	base: cfg.dist, port: 8010, keepalive: true },
+	});
+	*/
+	connectPHP.server({	base: cfg.src, port: 8010, keepalive: true },
 		function(){	browserSync({ proxy: '127.0.0.1:8010' }) }
     );
 
